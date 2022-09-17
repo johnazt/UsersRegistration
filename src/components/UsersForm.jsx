@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
+import AddIcon from "@mui/icons-material/Add";
 import { useForm } from "react-hook-form";
 
 const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
@@ -8,11 +9,20 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
 	const { register, handleSubmit, reset } = useForm();
 
 	function submit(data) {
-		axios
-			.post("https://users-crud1.herokuapp.com/users/", data)
-			.then(() => getUsers())
-			.catch(error => console.log(error.response));
-		clear();
+		if (userSelected) {
+			axios
+				.put(
+					`https://users-crud1.herokuapp.com/users/${userSelected.id}/`,
+					data
+				)
+				.then(() => getUsers());
+		} else {
+			axios
+				.post("https://users-crud1.herokuapp.com/users/", data)
+				.then(() => getUsers())
+				.catch(error => console.log(error.response));
+			clear();
+		}
 		setClose(false);
 	}
 
@@ -34,11 +44,18 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
 		deselectUser();
 	};
 
+	const newUserfunction = () => {
+		setClose(true);
+		clear();
+	};
+
 	return (
 		<>
 			<div className="container-add-btn">
 				<h1 className="users__title">Users</h1>
-				<button onClick={() => setClose(true)}>Add new User</button>
+				<button className="btn-new-user" onClick={newUserfunction}>
+					<AddIcon fontSize="medium"></AddIcon> Add new User
+				</button>
 			</div>
 			<div className={close ? "container-form" : "container-form close"}>
 				<form className="form" onSubmit={handleSubmit(submit)}>

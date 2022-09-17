@@ -11,11 +11,10 @@ ul {
 	list-style: none;
 }
 .App {
-  max-width: 1280px;
+	max-width: 1280px;
 	margin: 0 auto;
 	min-height: 100vh;
 	padding: 2em;
-  
 }
 .users__title {
 	font-size: 40px;
@@ -23,10 +22,8 @@ ul {
 }
 .container-add-btn {
 	display: flex;
-	/* justify-content: space-between; */
 	flex-direction: column;
 	row-gap: 2em;
-	/* align-items: center; */
 	margin-bottom: 2em;
 }
 .container-add-btn button {
@@ -59,6 +56,13 @@ ul {
 .form__title {
 	font-size: 32px;
 	margin-bottom: 0.7em;
+}
+.btn-new-user {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: .5em;
 }
 .close-form {
 	position: absolute;
@@ -114,7 +118,7 @@ ul {
 }
 .user-info {
 	padding: 20px 0;
-  border-bottom: 1px solid rgba(229, 229, 229, 1);
+	border-bottom: 1px solid rgba(229, 229, 229, 1);
 }
 .user-info span {
 	color: rgba(211, 211, 211, 1);
@@ -122,9 +126,15 @@ ul {
 .email {
 	margin-bottom: 0.7em;
 }
+.birthday {
+	display: flex;
+	align-items: flex-end;
+	column-gap: 0.5em;
+	line-height: normal;
+}
 .user-btn {
 	display: flex;
 	justify-content: end;
-  padding-top: 1em ;
+	padding-top: 1em;
 	column-gap: 1.5em;
 }

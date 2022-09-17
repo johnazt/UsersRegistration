@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import CakeIcon from '@mui/icons-material/Cake';
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import axios from "axios";
-import UsersForm from "./UsersForm";
+
 
 const UsersList = ({ users, getUsers , selectUser}) => {
     
@@ -25,7 +25,7 @@ const UsersList = ({ users, getUsers , selectUser}) => {
 							<span>EMAIL</span>
 							<div className="email">{user.email}</div>
 							<span>BIRTHDAY</span>
-							<div>{user.birthday}</div>
+							<div className='birthday' ><CakeIcon/>{user.birthday}</div>
 						</div>
 						<div className="user-btn">
 							<DeleteIcon onClick={() => deleteUser(user.id)}

@@ -26,7 +26,6 @@ function App() {
 		setUserSelected(user);
 	};
 
-	const updateUser = userSelected => {};
 
 	return (
 		<div className="App">
