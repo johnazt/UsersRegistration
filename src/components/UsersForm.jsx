@@ -1,18 +1,38 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-const UsersForm = ({getUsers}) => {
+const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
 	const [close, setClose] = useState(false);
-	const { register, handleSubmit } = useForm();
+	const { register, handleSubmit, reset } = useForm();
 
 	function submit(data) {
 		axios
-            .post("https://users-crud1.herokuapp.com/users/", data)
-            .then(() => getUsers())
+			.post("https://users-crud1.herokuapp.com/users/", data)
+			.then(() => getUsers())
 			.catch(error => console.log(error.response));
+		clear();
+		setClose(false);
 	}
+
+	useEffect(() => {
+		if (userSelected) {
+			reset(userSelected);
+			setClose(true);
+		}
+	}, [userSelected]);
+
+	const clear = () => {
+		reset({
+			email: "",
+			password: "",
+			first_name: "",
+			last_name: "",
+			birthday: "",
+		});
+		deselectUser();
+	};
 
 	return (
 		<>
@@ -31,6 +51,7 @@ const UsersForm = ({getUsers}) => {
 						<input
 							type="text"
 							id="first-name"
+							required
 							placeholder="first name"
 							{...register("first_name")}
 						/>
@@ -40,6 +61,7 @@ const UsersForm = ({getUsers}) => {
 						<input
 							type="text"
 							id="last-name"
+							required
 							placeholder="last name"
 							{...register("last_name")}
 						/>
@@ -49,6 +71,7 @@ const UsersForm = ({getUsers}) => {
 						<input
 							type="email"
 							id="email"
+							required
 							placeholder="email"
 							{...register("email")}
 						/>
@@ -58,13 +81,19 @@ const UsersForm = ({getUsers}) => {
 						<input
 							type="password"
 							id="password"
+							required
 							placeholder="password"
 							{...register("password")}
 						/>
 					</div>
 					<div className="container-input">
 						<label htmlFor="birthday">Birthday</label>
-						<input type="date" id="birthday" {...register("birthday")} />
+						<input
+							type="date"
+							id="birthday"
+							required
+							{...register("birthday")}
+						/>
 					</div>
 					<button className="btn-form">Add new user</button>
 				</form>

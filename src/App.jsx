@@ -6,6 +6,9 @@ import { useEffect } from "react";
 import { useState } from "react";
 function App() {
 	const [users, setUsers] = useState([]);
+	const [userSelected, setUserSelected] = useState(null);
+
+	const deselectUser = () => setUserSelected(null);
 
 	useEffect(() => {
 		axios
@@ -19,10 +22,24 @@ function App() {
 			.then(res => setUsers(res.data));
 	};
 
+	const selectUser = user => {
+		setUserSelected(user);
+	};
+
+	const updateUser = userSelected => {};
+
 	return (
 		<div className="App">
-			<UsersForm getUsers={getUsers}></UsersForm>
-			<UsersList users={users} getUsers={getUsers}></UsersList>
+			<UsersForm
+				getUsers={getUsers}
+				userSelected={userSelected}
+				deselectUser={deselectUser}
+			></UsersForm>
+			<UsersList
+				users={users}
+				getUsers={getUsers}
+				selectUser={selectUser}
+			></UsersList>
 		</div>
 	);
 }

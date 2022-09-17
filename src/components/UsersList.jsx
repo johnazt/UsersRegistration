@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import axios from "axios";
+import UsersForm from "./UsersForm";
 
-const UsersList = ({ users , getUsers}) => {
+const UsersList = ({ users, getUsers , selectUser}) => {
+    
     
     const deleteUser = id => {
 		axios
 			.delete(`https://users-crud1.herokuapp.com/users/${id}/`)
 			.then(() => getUsers());
-	};
+    };
 
 	return (
-		<div>
+        <div>
 			<ul className="container-users">
 				{users.map(user => (
 					<div key={user.id} className="container-user">
@@ -30,7 +32,7 @@ const UsersList = ({ users , getUsers}) => {
 								sx={{ color: "#D93F3F", cursor: "pointer" }}
 								fontSize="large"
 							></DeleteIcon>
-							<EditIcon onClick={() => console.log(user)}
+							<EditIcon onClick={() => selectUser(user)}
 								sx={{ color: "#ccc", cursor: "pointer" }}
 								fontSize="large"
 							></EditIcon>
