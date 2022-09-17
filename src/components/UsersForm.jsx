@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
 import { useForm } from "react-hook-form";
 
@@ -60,9 +61,9 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
 			<div className={close ? "container-form" : "container-form close"}>
 				<form className="form" onSubmit={handleSubmit(submit)}>
 					<span onClick={() => setClose(false)} className="close-form">
-						X
+						<CloseIcon></CloseIcon>
 					</span>
-					<h2 className="form__title">New User</h2>
+					<h2 className="form__title">{userSelected ? "Edit User" : "New User"}</h2>
 					<div className="container-input">
 						<label htmlFor="first-name">First Name</label>
 						<input
@@ -112,7 +113,7 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
 							{...register("birthday")}
 						/>
 					</div>
-					<button className="btn-form">Add new user</button>
+					<button className="btn-form">{userSelected ? "Save Changes" : "Add new user"}</button>
 				</form>
 			</div>
 		</>
