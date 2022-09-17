@@ -1,4 +1,5 @@
-# ➤ User Registration
+# ➤ Users Registration
+### --------------------------------------
 - I made this app using CRUD method. 
 - Use of API's
 
