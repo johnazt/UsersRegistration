@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
 import { useForm } from "react-hook-form";
 
 const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
@@ -53,7 +54,10 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
 	return (
 		<>
 			<div className="container-add-btn">
-				<h1 className="users__title">Users</h1>
+				<h1 className="users__title">
+					Users{" "}
+					<HowToRegIcon fontSize="extra-large" sx={{ marginBottom: "-6px" }} />
+				</h1>
 				<button className="btn-new-user" onClick={newUserfunction}>
 					<AddIcon fontSize="medium"></AddIcon> Add new User
 				</button>
@@ -63,7 +67,9 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
 					<span onClick={() => setClose(false)} className="close-form">
 						<CloseIcon></CloseIcon>
 					</span>
-					<h2 className="form__title">{userSelected ? "Edit User" : "New User"}</h2>
+					<h2 className="form__title">
+						{userSelected ? "Edit User" : "New User"}
+					</h2>
 					<div className="container-input">
 						<label htmlFor="first-name">First Name</label>
 						<input
@@ -113,7 +119,9 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
 							{...register("birthday")}
 						/>
 					</div>
-					<button className="btn-form">{userSelected ? "Save Changes" : "Add new user"}</button>
+					<button className="btn-form">
+						{userSelected ? "Save Changes" : "Add new user"}
+					</button>
 				</form>
 			</div>
 		</>

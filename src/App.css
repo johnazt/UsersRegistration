@@ -52,6 +52,7 @@ ul {
 	padding: 2em 1em 1em 1em;
 	background-color: #fff;
 	border: 1px solid black;
+	box-shadow: 2px 3px 11px 4px rgba(0, 0, 0, 0.34);
 }
 .form__title {
 	font-size: 32px;
@@ -63,6 +64,7 @@ ul {
 	align-items: center;
 	justify-content: center;
 	column-gap: 0.5em;
+	cursor: pointer;
 }
 .close-form {
 	position: absolute;
@@ -138,32 +140,51 @@ ul {
 	padding-top: 1em;
 	column-gap: 1.5em;
 }
+/* ========== POPUP DELETE ============= */
+.deleteMessage {
+	position: fixed;
+	max-width: 350px;
+	max-height: 250px;
+	inset: 0;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	row-gap: 1.5em;
+	background-color: #fff;
+	padding: 2em;
+	box-shadow: 2px 3px 11px 4px rgba(0, 0, 0, 0.34);
+}
+.margin-top {
+	margin-top: 0;
+}
+
 @media screen and (min-width: 768px) {
-  .container-add-btn {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 3em 0;
-  }
-  .container-add-btn button {
-    min-width: 250px;
-    padding: .7em;
-  }
-  .container-users {
-    flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: 3em;
-  }
-  .container-user {
-    min-width: 373px;
-    max-width: 381px;
-  }
-  .form {
-    max-width: 400px;
-    max-height: 720px;
-    padding: 3em 1.5em;
-  }
-  .btn-form {
-    font-size: 16px;
-  }
+	.container-add-btn {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 3em 0;
+	}
+	.container-add-btn button {
+		min-width: 250px;
+		padding: 0.7em;
+	}
+	.container-users {
+		flex-direction: row;
+		flex-wrap: wrap;
+		column-gap: 3em;
+	}
+	.container-user {
+		min-width: 373px;
+		max-width: 381px;
+	}
+	.form {
+		max-width: 400px;
+		max-height: 720px;
+		padding: 3em 1.5em;
+	}
+	.btn-form {
+		font-size: 16px;
+	}
 }

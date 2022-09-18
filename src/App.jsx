@@ -4,6 +4,7 @@ import "./App.css";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import UserDelete from "./components/UserDelete";
 function App() {
 	const [users, setUsers] = useState([]);
 	const [userSelected, setUserSelected] = useState(null);
@@ -28,7 +29,7 @@ function App() {
 
 
 	return (
-		<div className="App">
+    <div className="App">
 			<UsersForm
 				getUsers={getUsers}
 				userSelected={userSelected}

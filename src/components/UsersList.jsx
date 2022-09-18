@@ -1,20 +1,32 @@
-import CakeIcon from '@mui/icons-material/Cake';
+import CakeIcon from "@mui/icons-material/Cake";
 import DeleteIcon from "@mui/icons-material/Delete";
+import UserDelete from "./UserDelete";
 import EditIcon from "@mui/icons-material/Edit";
 import axios from "axios";
+import { useState } from "react";
 
+const UsersList = ({ users, getUsers, selectUser }) => {
+	const [stateDelete, setStateDelete] = useState(false);
+	const [user, setUser] = useState(null);
 
-const UsersList = ({ users, getUsers , selectUser}) => {
-    
-    
-    const deleteUser = id => {
+	const deleteUser = user => {
+		setStateDelete(true);
+		setUser(user);
 		axios
-			.delete(`https://users-crud1.herokuapp.com/users/${id}/`)
+			.delete(`https://users-crud1.herokuapp.com/users/${user.id}/`)
 			.then(() => getUsers());
-    };
+	};
 
 	return (
-        <div>
+		<div>
+			{stateDelete && (
+				<UserDelete
+					user={user}
+					stateDelete={stateDelete}
+					setStateDelete={setStateDelete}
+				/>
+			)}
+
 			<ul className="container-users">
 				{users.map(user => (
 					<div key={user.id} className="container-user">
@@ -25,14 +37,19 @@ const UsersList = ({ users, getUsers , selectUser}) => {
 							<span>EMAIL</span>
 							<div className="email">{user.email}</div>
 							<span>BIRTHDAY</span>
-							<div className='birthday' ><CakeIcon/>{user.birthday}</div>
+							<div className="birthday">
+								<CakeIcon />
+								{user.birthday}
+							</div>
 						</div>
 						<div className="user-btn">
-							<DeleteIcon onClick={() => deleteUser(user.id)}
+							<DeleteIcon
+								onClick={() => deleteUser(user)}
 								sx={{ color: "#D93F3F", cursor: "pointer" }}
 								fontSize="large"
 							></DeleteIcon>
-							<EditIcon onClick={() => selectUser(user)}
+							<EditIcon
+								onClick={() => selectUser(user)}
 								sx={{ color: "#ccc", cursor: "pointer" }}
 								fontSize="large"
 							></EditIcon>
