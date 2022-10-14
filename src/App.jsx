@@ -13,13 +13,13 @@ function App() {
 
 	useEffect(() => {
 		axios
-			.get("http://144.126.218.162:9000/users/")
+			.get("https://144.126.218.162:9000/users/")
 			.then(res => setUsers(res.data));
 	}, []);
 
 	const getUsers = () => {
 		axios
-			.get("http://144.126.218.162:9000/users/")
+			.get("https://144.126.218.162:9000/users/")
 			.then(res => setUsers(res.data));
 	};
 
