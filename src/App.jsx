@@ -27,8 +27,6 @@ function App() {
 		setUserSelected(user);
 	};
 
-	console.log(users)
-
 	return (
     <div className="App">
 			<UsersForm
