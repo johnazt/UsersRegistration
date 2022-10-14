@@ -4,7 +4,7 @@ import "./App.css";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import UserDelete from "./components/UserDelete";
+
 function App() {
 	const [users, setUsers] = useState([]);
 	const [userSelected, setUserSelected] = useState(null);
@@ -13,13 +13,13 @@ function App() {
 
 	useEffect(() => {
 		axios
-			.get("https://users-crud1.herokuapp.com/users/")
+			.get("http://144.126.218.162:9000/users/")
 			.then(res => setUsers(res.data));
 	}, []);
 
 	const getUsers = () => {
 		axios
-			.get("https://users-crud1.herokuapp.com/users/")
+			.get("http://144.126.218.162:9000/users/")
 			.then(res => setUsers(res.data));
 	};
 
