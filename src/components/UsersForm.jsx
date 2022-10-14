@@ -14,13 +14,14 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
 		if (userSelected) {
 			axios
 				.put(
-					`https://144.126.218.162:9000/users/${userSelected.id}/`,
+					`http://144.126.218.162:9000/users/${userSelected.id}/`,
 					data
 				)
-				.then(() => getUsers());
+				.then(() => getUsers())
+				.catch(error => console.log(error.response));
 		} else {
 			axios
-				.post("https://144.126.218.162:9000/users/", data)
+				.post("http://144.126.218.162:9000/users/", data)
 				.then(() => getUsers())
 				.catch(error => console.log(error.response));
 			clear();

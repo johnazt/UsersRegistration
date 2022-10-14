@@ -13,7 +13,7 @@ const UsersList = ({ users, getUsers, selectUser }) => {
 		setStateDelete(true);
 		setUser(user);
 		axios
-			.delete(`https://144.126.218.162:9000/users/${user.id}/`)
+			.delete(`http://144.126.218.162:9000/users/${user.id}/`)
 			.then(() => getUsers());
 	};
 

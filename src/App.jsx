@@ -13,13 +13,13 @@ function App() {
 
 	useEffect(() => {
 		axios
-			.get("https://144.126.218.162:9000/users/")
+			.get("http://144.126.218.162:9000/users/")
 			.then(res => setUsers(res.data));
 	}, []);
 
 	const getUsers = () => {
 		axios
-			.get("https://144.126.218.162:9000/users/")
+			.get("http://144.126.218.162:9000/users/")
 			.then(res => setUsers(res.data));
 	};
 
@@ -27,6 +27,7 @@ function App() {
 		setUserSelected(user);
 	};
 
+	console.log(users)
 
 	return (
     <div className="App">
